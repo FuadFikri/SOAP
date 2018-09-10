@@ -1,7 +1,7 @@
 <?php
     require_once('lib/nusoap.php');
     $result = array();
-    $wsdl = "http://10.33.34.151/nusoap/server.php?wsdl";
+    $wsdl = "http://localhost/nusoap/server.php?wsdl";
     $client = new nusoap_client($wsdl, true);
     $err = $client->getError();
     if($err){
@@ -25,12 +25,15 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 </head>
 <body>
 
 <div class="container">
   <h2>Books Store SOAP Web Service</h2>
-  
+  <a href="tambah.php">
+    <button type="button" class="btn btn-primary" style="float: right;"><i class="fas fa-plus"></i> Tambah</button>
+  </a>
    <br />
    <h2>Book Information</h2>
   <table class="table">
