@@ -44,7 +44,7 @@
         <th>Price</th>
         <th>ISBN</th>
         <th>Category</th>
-      </tr>
+        <th>#</th>
     </thead>
     <tbody>
     <?php if(count($result)) {
@@ -56,6 +56,7 @@
             <td><?php echo $key->price; ?></td>
             <td><?php echo $key->isbn; ?></td>
             <td><?php echo $key->category; ?></td>
+            <td><a href="hapus.php?id=<?php echo $key->id?>">hapus</a>|</td>
         </tr>
         <?php } }
         else{?>   

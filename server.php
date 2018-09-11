@@ -17,15 +17,28 @@
     }
 
     function insertBook($title,$author_name,$price,$isbn,$category){
-        global $dbconn;
-        $sql = "INSERT into books set (title,author_name,price,isbn,category) VALUES ('$title','$author_name','$price','$isbn','$category')";
-
-        $stmt = $dbconn->prepare($sql);
-        // insert row
-        $stmt->execute();
-        return "berhasil berhasil oke";
-        $dbconn = null;
+		//code
+		global $dbconn;
+		$sql = "INSERT INTO books(title,author_name,price,isbn,category) VALUES('$title','$author_name','$price','$isbn','$category')";
+		
+		$stmt = $dbconn->prepare($sql);
+		// insert a row
+		$stmt->execute();
+		return "data berhasil diinput";
+		$dbconn = null;
     }
+    function deleteBook($id){
+		//code
+		//code
+		global $dbconn;
+		$sql = "DELETE FROM books WHERE id = $id";
+		
+		$stmt = $dbconn->prepare($sql);
+		// insert a row
+		$stmt->execute();
+		return "data berhasil dihaspus";
+		$dbconn = null;
+	}
 
     $server->configureWSDL('Toko Buku', 'urn:book');
     $server->register('getBookData',
@@ -42,7 +55,13 @@
                             'category' => 'xsd:String'),  //parameter  cuma buat dokumentasi   
                         array('status'    => 'xsd:String'), //output
                         'urn:book', //namespace
-                        'urn:book#insertBook');  //soap action                        
+                        'urn:book#insertBook');  //soap action    
+    $server->register('deleteBook',
+            array('id' => 'xsd:String'),  //parameter
+            array('status' => 'xsd:String'),  //output
+            'urn:book',   //namespace
+            'urn:book#deleteBook' //soapaction
+            );                    
     
     $server->service(file_get_contents("php://input"));
 
